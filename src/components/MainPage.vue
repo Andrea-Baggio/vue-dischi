@@ -1,8 +1,5 @@
 <template>
   <div class="container">
-    <h1>
-      Spotify
-    </h1>
     <div class="content">
       <div class="content-box">
         <AlbumsPageVue />
@@ -23,10 +20,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h1 {
-  text-align: center;
-  color: rgb(194, 194, 194);
-  background-color: rgb(49, 49, 49);
-  padding: .6rem 0;
+
+.content {
+  height: calc(100vh - 56px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-box {
+  max-width: 1000px;
+  border: 2px solid yellow;
 }
 </style>
