@@ -9,6 +9,8 @@
 import HeaderPageVue from './components/HeaderPage.vue';
 import MainPageVue from './components/MainPage.vue';
 
+// https://flynn.boolean.careers/exercises/api/array/music
+
 export default {
   components: {
     HeaderPageVue,

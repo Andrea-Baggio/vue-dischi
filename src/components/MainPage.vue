@@ -1,37 +1,46 @@
 <template>
   <div>
-    <AlbumsPageVue />
     <div class="content">
       <div
         v-for="element in arrAlbums"
         :key="element"
         class="box-content"
-        :img-url="element.poster"
-        :title="element.title"
-        :author="element.author"
-        :year="element.year"
-      /> {{ element.imgUrl }}
+      >
+        <div class="poster">
+          <img
+            :src="element.poster"
+            alt="poster"
+          >
+        </div>
+
+        <h3>{{ element.title }}</h3>
+        <div class="author">
+          {{ element.author }}
+        </div>
+        <div class="year">
+          {{ element.year }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import AlbumsPageVue from './AlbumsPage.vue';
 
 export default {
   name: 'MainPage',
   components: {
-    AlbumsPageVue,
+
   },
   data() {
     return {
       arrAlbums: null,
-      urlAPI: 'https://flynn.boolean.careers/exercises/api/array/music',
+      urlApi: 'https://flynn.boolean.careers/exercises/api/array/music',
     };
   },
   created() {
-    axios.get(this.urlAPI)
+    axios.get(this.urlApi)
       .then((axiosResponse) => {
         console.log(axiosResponse);
         this.arrAlbums = axiosResponse.data.response;
@@ -43,18 +52,28 @@ export default {
 <style lang="scss" scoped>
 
 .content {
-  height: calc(100vh - 77px);
-  max-width: 900px;
+  height: calc(100vh - 57px);
+  max-width: 1000px;
   margin: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  border: 2px solid yellow;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 3rem 0;
+  font-size: .8em;
 }
 
 .box-content {
-  height: 50px;
-  width: 50px;
-  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  flex-basis: calc((100% - 1rem) / 5);
+}
+
+.poster {
+  max-width: 130px;
+  img {
+    width: 100%;
+  }
 }
 </style>
